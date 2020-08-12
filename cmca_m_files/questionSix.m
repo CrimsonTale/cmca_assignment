@@ -64,13 +64,20 @@ while ~isempty(additionalPurchase) || not(strcmp(additionalPurchase, 'Y')) && no
                 end
             end
 
-
+            %{
+                following tweaks made:
+            
+                case has to be <251, <571 and not <=250,<=570 or else no
+                discount will be applied for values between 250 and 251;
+                570 and 571
+                eg. $250.50 or $570.20 will result in net amount $0.
+            %}
             if userChoice == 'L'
                 switch true
-                    case (0 <= userPurchase) && (userPurchase <= 250)
+                    case (0 <= userPurchase) && (userPurchase < 251)
                         discount = (0/100) * userPurchase;
                         netAmount = userPurchase - discount;
-                    case (251 <= userPurchase) && (userPurchase <= 570)
+                    case (251 <= userPurchase) && (userPurchase < 571)
                         discount = (5/100) * userPurchase;
                         netAmount = userPurchase - discount;
                     case (571 <= userPurchase) && (userPurchase <= 1000)
@@ -82,10 +89,10 @@ while ~isempty(additionalPurchase) || not(strcmp(additionalPurchase, 'Y')) && no
                 end
             elseif userChoice == 'D'
                 switch true
-                    case (0 <= userPurchase) && (userPurchase <= 250)
+                    case (0 <= userPurchase) && (userPurchase < 251)
                         discount = (5/100) * userPurchase;
                         netAmount = userPurchase - discount;
-                    case (251 <= userPurchase) && (userPurchase <= 570)
+                    case (251 <= userPurchase) && (userPurchase < 571)
                         discount = (7.6/100) * userPurchase;
                         netAmount = userPurchase - discount;
                     case (571 <= userPurchase) && (userPurchase <= 1000)

@@ -1,5 +1,5 @@
-% clc;
-% clear;
+clc;
+clear;
 
 prompt = ('Conversions for the following: \nDegrees to Radians(DR)\nRadians to Degrees(RD)\nPlease type DR or RD: ');
 userInput = input(prompt, 's');
